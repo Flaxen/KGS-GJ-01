@@ -1,10 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://cwrmtmviupasq"]
 
-[ext_resource type="PackedScene" uid="uid://c60b3sbm5qpft" path="res://assets/ForestDirt/forest-dirt-edgy-edge-inner-1.gltf" id="1_4cdfr"]
-[ext_resource type="PackedScene" uid="uid://b2iiritttvshn" path="res://assets/ForestDirt/forest-dirt-side-2.gltf" id="2_1rrwx"]
-[ext_resource type="PackedScene" uid="uid://biniwobuu0ub6" path="res://assets/ForestWater/forest-water-edgy-edge-inner-1.gltf" id="3_me3h7"]
-[ext_resource type="PackedScene" uid="uid://dxviiy01cm4cf" path="res://assets/Wood/wood-2.gltf" id="4_50kkg"]
-[ext_resource type="PackedScene" uid="uid://bggsuutrv7ecv" path="res://assets/Mountains/mountain-edge-outer-4.gltf" id="5_5i5s7"]
+[ext_resource type="PackedScene" uid="uid://b7ye1opacvy2e" path="res://scenes/mapblock1.tscn" id="2_1en6r"]
 [ext_resource type="PackedScene" uid="uid://c70e4c6o1bkdi" path="res://scenes/character_temp.tscn" id="6_1rrwx"]
 [ext_resource type="Texture2D" uid="uid://ckkf06tvhdv4o" path="res://assets/characters/Tiny RPG Character Asset Pack v1.03b -Free Soldier&Orc/Tiny RPG Character Asset Pack v1.03 -Free Soldier&Orc/Characters(100x100)/Soldier/Soldier/Soldier-Idle.png" id="7_me3h7"]
 
@@ -62,28 +58,6 @@ animations = [{
 }]
 
 [node name="alex_map" type="Node3D"]
-
-[node name="terrain" type="Node3D" parent="."]
-
-[node name="forest-dirt-edgy-edge-inner-1" parent="terrain" instance=ExtResource("1_4cdfr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.175329, 0, -0.333943)
-
-[node name="forest-dirt-side-2" parent="terrain" instance=ExtResource("2_1rrwx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.23309, 0, -0.334961)
-
-[node name="forest-water-edgy-edge-inner-1" parent="terrain" instance=ExtResource("3_me3h7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.25989, 0, 2.80483)
-
-[node name="wood-2" parent="terrain" instance=ExtResource("4_50kkg")]
-transform = Transform3D(0.445385, 0, -0.895339, 0, 1, 0, 0.895339, 0, 0.445385, -3.18019, 0.26227, 0.818516)
-
-[node name="mountain-edge-outer-4" parent="terrain" instance=ExtResource("5_5i5s7")]
-transform = Transform3D(-0.00514867, 0, 0.999987, 0, 1, 0, -0.999987, 0, -0.00514867, -4.87771, 0, 0.602015)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="terrain"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="terrain/StaticBody3D"]
-shape = SubResource("BoxShape3D_1rrwx")
 
 [node name="character_temp" parent="." instance=ExtResource("6_1rrwx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.83467, 1.49317, -0.393256)
