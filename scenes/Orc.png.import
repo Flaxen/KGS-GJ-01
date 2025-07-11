@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4j7p5cvrxbjv"
-path.s3tc="res://.godot/imported/Orc-Walk.png-e8f0de73f9da630b63f8165dc15fb363.s3tc.ctex"
+uid="uid://cpgyt78eer87n"
+path.s3tc="res://.godot/imported/Orc.png-bc00263c415166eb3667f4057342ae94.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/characters/characters/Characters(100x100)/Orc/Orc/Orc-Walk.png"
-dest_files=["res://.godot/imported/Orc-Walk.png-e8f0de73f9da630b63f8165dc15fb363.s3tc.ctex"]
+source_file="res://scenes/Orc.png"
+dest_files=["res://.godot/imported/Orc.png-bc00263c415166eb3667f4057342ae94.s3tc.ctex"]
 
 [params]
 
