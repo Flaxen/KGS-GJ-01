@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b4w6jfh3ngm2c"]
 
 [ext_resource type="Script" uid="uid://n0t0m6o88yy1" path="res://map_spawner.gd" id="1_qgho1"]
-[ext_resource type="PackedScene" uid="uid://b7ye1opacvy2e" path="res://scenes/mapblock1.tscn" id="2_in841"]
+[ext_resource type="PackedScene" uid="uid://3xvdmdoq85n4" path="res://scenes/mapblock1.tscn" id="2_in841"]
 
 [node name="map_spawner" type="Node3D"]
 script = ExtResource("1_qgho1")
