@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cwrmtmviupasq"]
+[gd_scene load_steps=16 format=3 uid="uid://cwrmtmviupasq"]
 
 [ext_resource type="PackedScene" uid="uid://c60b3sbm5qpft" path="res://assets/ForestDirt/forest-dirt-edgy-edge-inner-1.gltf" id="1_4cdfr"]
 [ext_resource type="PackedScene" uid="uid://b2iiritttvshn" path="res://assets/ForestDirt/forest-dirt-side-2.gltf" id="2_1rrwx"]
@@ -6,9 +6,60 @@
 [ext_resource type="PackedScene" uid="uid://dxviiy01cm4cf" path="res://assets/Wood/wood-2.gltf" id="4_50kkg"]
 [ext_resource type="PackedScene" uid="uid://bggsuutrv7ecv" path="res://assets/Mountains/mountain-edge-outer-4.gltf" id="5_5i5s7"]
 [ext_resource type="PackedScene" uid="uid://c70e4c6o1bkdi" path="res://scenes/character_temp.tscn" id="6_1rrwx"]
+[ext_resource type="Texture2D" uid="uid://bu0cdkvhcgeo3" path="res://assets/characters/characters/Characters(100x100)/Soldier/Soldier/Soldier.png" id="7_me3h7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1rrwx"]
 size = Vector3(20, 1, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50kkg"]
+atlas = ExtResource("7_me3h7")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5i5s7"]
+atlas = ExtResource("7_me3h7")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1fjpd"]
+atlas = ExtResource("7_me3h7")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q1wer"]
+atlas = ExtResource("7_me3h7")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s1csu"]
+atlas = ExtResource("7_me3h7")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_twbp2"]
+atlas = ExtResource("7_me3h7")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t35xx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50kkg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5i5s7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1fjpd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q1wer")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s1csu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_twbp2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [node name="alex_map" type="Node3D"]
 
@@ -48,3 +99,10 @@ light_volumetric_fog_energy = 4.556
 light_angular_distance = 27.27
 light_specular = 3.909
 sky_mode = 1
+
+[node name="SoldierAttackAnimation" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0952545, 1.76119, 0.117097)
+double_sided = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_t35xx")
+frame_progress = 0.836905
