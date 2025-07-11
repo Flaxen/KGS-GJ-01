@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://yny74xhm0bdb"
-path="res://.godot/imported/Orc.png-77cc297507b0c1074227cffbf0e6a5f9.ctex"
+path="res://.godot/imported/Orc.png-ddbe5b3374ec9c1761bfb4eb1908d456.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/chara/Characters(100x100)/Orc/Orc/Orc.png"
-dest_files=["res://.godot/imported/Orc.png-77cc297507b0c1074227cffbf0e6a5f9.ctex"]
+source_file="res://assets/characters/characters/Characters(100x100)/Orc/Orc/Orc.png"
+dest_files=["res://.godot/imported/Orc.png-ddbe5b3374ec9c1761bfb4eb1908d456.ctex"]
 
 [params]
 
