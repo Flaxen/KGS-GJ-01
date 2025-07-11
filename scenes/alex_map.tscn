@@ -1,73 +1,17 @@
-[gd_scene load_steps=16 format=3 uid="uid://cwrmtmviupasq"]
+[gd_scene load_steps=4 format=3 uid="uid://cwrmtmviupasq"]
 
 [ext_resource type="PackedScene" uid="uid://b7ye1opacvy2e" path="res://scenes/mapblock1.tscn" id="2_1en6r"]
 [ext_resource type="PackedScene" uid="uid://c70e4c6o1bkdi" path="res://scenes/character_temp.tscn" id="6_1rrwx"]
 
-[ext_resource type="Texture2D" uid="uid://ckkf06tvhdv4o" path="res://assets/characters/Tiny RPG Character Asset Pack v1.03b -Free Soldier&Orc/Tiny RPG Character Asset Pack v1.03 -Free Soldier&Orc/Characters(100x100)/Soldier/Soldier/Soldier-Idle.png" id="7_me3h7"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_1rrwx"]
-size = Vector3(20, 1, 20)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_50kkg"]
-atlas = ExtResource("7_me3h7")
-region = Rect2(0, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5i5s7"]
-atlas = ExtResource("7_me3h7")
-region = Rect2(100, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1fjpd"]
-atlas = ExtResource("7_me3h7")
-region = Rect2(200, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_q1wer"]
-atlas = ExtResource("7_me3h7")
-region = Rect2(300, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s1csu"]
-atlas = ExtResource("7_me3h7")
-region = Rect2(400, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_twbp2"]
-atlas = ExtResource("7_me3h7")
-region = Rect2(500, 0, 100, 100)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_t35xx"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_50kkg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5i5s7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1fjpd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_q1wer")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_s1csu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_twbp2")
-}],
-"loop": true,
-"name": &"soldier_idle",
-"speed": 5.0
-}]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_2q81j"]
 
 [node name="alex_map" type="Node3D"]
 
 [node name="character_temp" parent="." instance=ExtResource("6_1rrwx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.83467, 1.49317, -0.393256)
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="character_temp"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.15721, 0)
-sprite_frames = SubResource("SpriteFrames_t35xx")
-animation = &"soldier_idle"
-frame_progress = 0.104819
+[node name="MeshInstance3D" type="MeshInstance3D" parent="character_temp"]
+mesh = SubResource("CapsuleMesh_2q81j")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.775176, -0.396601, 0.491741, 0, 0.778386, 0.627786, -0.631745, -0.486645, 0.603386, 2.72203, 5.86601, 5.49137)
@@ -81,9 +25,5 @@ light_angular_distance = 27.27
 light_specular = 3.909
 sky_mode = 1
 
-[node name="SoldierAttackAnimation" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0952545, 1.76119, 0.117097)
-double_sided = false
-texture_filter = 0
-sprite_frames = SubResource("SpriteFrames_t35xx")
-frame_progress = 0.836905
+[node name="mapblock1" parent="." instance=ExtResource("2_1en6r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.61766, 0, 0.100839)
