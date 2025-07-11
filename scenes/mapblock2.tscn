@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://wt5pwplax7y"]
+
+[ext_resource type="PackedScene" uid="uid://c0kbtbqs56042" path="res://assets/Meshes/SM_FloorSteps_x1.fbx" id="1_tamub"]
+[ext_resource type="PackedScene" uid="uid://dfa60egrx8yom" path="res://assets/Meshes/SM_Floor_x1.fbx" id="2_b25ul"]
+[ext_resource type="PackedScene" uid="uid://bis2b1a7xpfqx" path="res://assets/Meshes/SM_Gate01.fbx" id="3_qgmnw"]
+[ext_resource type="PackedScene" uid="uid://2ix6tl74hpvs" path="res://assets/Meshes/SM_PillarArch01.fbx" id="4_jwf1k"]
+[ext_resource type="PackedScene" uid="uid://cjqeshs7i06ml" path="res://assets/Meshes/SM_WallGate01.fbx" id="5_6125k"]
+[ext_resource type="PackedScene" uid="uid://cawhn1yvd480k" path="res://assets/Meshes/SM_WallWindow01.fbx" id="6_j63u1"]
+
+[node name="mapblock2" type="Node3D"]
+
+[node name="terrain" type="Node3D" parent="."]
+
+[node name="SM_FloorSteps_x1" parent="terrain" instance=ExtResource("1_tamub")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8, -0.542905, 0)
+
+[node name="SM_FloorSteps_x2" parent="terrain" instance=ExtResource("1_tamub")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8, -0.540846, 0)
+
+[node name="SM_Floor_x1" parent="terrain" instance=ExtResource("2_b25ul")]
+
+[node name="SM_Gate01" parent="terrain" instance=ExtResource("3_qgmnw")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -4)
+
+[node name="SM_PillarArch01" parent="terrain" instance=ExtResource("4_jwf1k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.593226, 1.19209e-07, 3.67072)
+
+[node name="SM_PillarArch05" parent="terrain" instance=ExtResource("4_jwf1k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.08433, 1.19209e-07, 3.67072)
+
+[node name="SM_PillarArch06" parent="terrain" instance=ExtResource("4_jwf1k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.4792, -0.496004, 3.67072)
+
+[node name="SM_PillarArch07" parent="terrain" instance=ExtResource("4_jwf1k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.4097, -0.496004, 3.67072)
+
+[node name="SM_PillarArch02" parent="terrain" instance=ExtResource("4_jwf1k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3688, 1.19209e-07, 3.67072)
+
+[node name="SM_PillarArch03" parent="terrain" instance=ExtResource("4_jwf1k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.29357, -0.544999, 3.67072)
+
+[node name="SM_PillarArch04" parent="terrain" instance=ExtResource("4_jwf1k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.52551, -0.544999, 3.67072)
+
+[node name="SM_WallGate01" parent="terrain" instance=ExtResource("5_6125k")]
+transform = Transform3D(-0.999501, 0, 0.0315851, 0, 1, 0, -0.0315851, 0, -0.999501, 0, 0, 0)
+
+[node name="SM_Gate02" parent="terrain" instance=ExtResource("3_qgmnw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -11.8774, -0.554197, -0.0525413)
+
+[node name="SM_WallGate02" parent="terrain" instance=ExtResource("5_6125k")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.72012, -0.554197, 0)
+
+[node name="SM_WallWindow01" parent="terrain" instance=ExtResource("6_j63u1")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, -0.681971, -4)
+
+[node name="SM_WallWindow02" parent="terrain" instance=ExtResource("6_j63u1")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8, -0.681109, -4)
+
+[node name="SM_WallWindow03" parent="terrain" instance=ExtResource("6_j63u1")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -11.7709, -0.681971, -4)
+
+[node name="SM_WallWindow04" parent="terrain" instance=ExtResource("6_j63u1")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7.77094, -0.681109, -4)
