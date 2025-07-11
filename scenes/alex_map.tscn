@@ -1,24 +1,50 @@
-[gd_scene load_steps=6 format=3 uid="uid://cwrmtmviupasq"]
+[gd_scene load_steps=8 format=3 uid="uid://cwrmtmviupasq"]
 
 [ext_resource type="PackedScene" uid="uid://c60b3sbm5qpft" path="res://assets/ForestDirt/forest-dirt-edgy-edge-inner-1.gltf" id="1_4cdfr"]
 [ext_resource type="PackedScene" uid="uid://b2iiritttvshn" path="res://assets/ForestDirt/forest-dirt-side-2.gltf" id="2_1rrwx"]
 [ext_resource type="PackedScene" uid="uid://biniwobuu0ub6" path="res://assets/ForestWater/forest-water-edgy-edge-inner-1.gltf" id="3_me3h7"]
 [ext_resource type="PackedScene" uid="uid://dxviiy01cm4cf" path="res://assets/Wood/wood-2.gltf" id="4_50kkg"]
 [ext_resource type="PackedScene" uid="uid://bggsuutrv7ecv" path="res://assets/Mountains/mountain-edge-outer-4.gltf" id="5_5i5s7"]
+[ext_resource type="PackedScene" uid="uid://c70e4c6o1bkdi" path="res://scenes/character_temp.tscn" id="6_1rrwx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1rrwx"]
+size = Vector3(20, 1, 20)
 
 [node name="alex_map" type="Node3D"]
 
-[node name="forest-dirt-edgy-edge-inner-1" parent="." instance=ExtResource("1_4cdfr")]
+[node name="terrain" type="Node3D" parent="."]
+
+[node name="forest-dirt-edgy-edge-inner-1" parent="terrain" instance=ExtResource("1_4cdfr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.175329, 0, -0.333943)
 
-[node name="forest-dirt-side-2" parent="." instance=ExtResource("2_1rrwx")]
+[node name="forest-dirt-side-2" parent="terrain" instance=ExtResource("2_1rrwx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.23309, 0, -0.334961)
 
-[node name="forest-water-edgy-edge-inner-1" parent="." instance=ExtResource("3_me3h7")]
+[node name="forest-water-edgy-edge-inner-1" parent="terrain" instance=ExtResource("3_me3h7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.25989, 0, 2.80483)
 
-[node name="wood-2" parent="." instance=ExtResource("4_50kkg")]
+[node name="wood-2" parent="terrain" instance=ExtResource("4_50kkg")]
 transform = Transform3D(0.445385, 0, -0.895339, 0, 1, 0, 0.895339, 0, 0.445385, -3.18019, 0.26227, 0.818516)
 
-[node name="mountain-edge-outer-4" parent="." instance=ExtResource("5_5i5s7")]
+[node name="mountain-edge-outer-4" parent="terrain" instance=ExtResource("5_5i5s7")]
 transform = Transform3D(-0.00514867, 0, 0.999987, 0, 1, 0, -0.999987, 0, -0.00514867, -4.87771, 0, 0.602015)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="terrain"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="terrain/StaticBody3D"]
+shape = SubResource("BoxShape3D_1rrwx")
+
+[node name="character_temp" parent="." instance=ExtResource("6_1rrwx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.83467, 1.49317, -0.393256)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.775176, -0.396601, 0.491741, 0, 0.778386, 0.627786, -0.631745, -0.486645, 0.603386, 2.72203, 5.86601, 5.49137)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.2931, 45.6556, 9.99736)
+light_energy = 4.717
+light_indirect_energy = 4.879
+light_volumetric_fog_energy = 4.556
+light_angular_distance = 27.27
+light_specular = 3.909
+sky_mode = 1
