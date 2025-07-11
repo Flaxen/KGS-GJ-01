@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmw87stuo5e7x"]
+
+[ext_resource type="Script" uid="uid://dgd7oihnng5fp" path="res://scripts/door_zone.gd" id="1_q67vx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_32lvc"]
+
+[node name="door_zone" type="Area3D"]
+script = ExtResource("1_q67vx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_32lvc")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
