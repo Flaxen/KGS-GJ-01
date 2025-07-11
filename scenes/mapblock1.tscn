@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b7ye1opacvy2e"]
+[gd_scene load_steps=9 format=3 uid="uid://3xvdmdoq85n4"]
 
 [ext_resource type="PackedScene" uid="uid://c60b3sbm5qpft" path="res://assets/ForestDirt/forest-dirt-edgy-edge-inner-1.gltf" id="1_2ytro"]
 [ext_resource type="PackedScene" uid="uid://b2iiritttvshn" path="res://assets/ForestDirt/forest-dirt-side-2.gltf" id="2_yoo0r"]
