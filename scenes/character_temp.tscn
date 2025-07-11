@@ -1,16 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://c70e4c6o1bkdi"]
+[gd_scene load_steps=3 format=3 uid="uid://c70e4c6o1bkdi"]
 
 [ext_resource type="Script" uid="uid://biumrh0f5nl2m" path="res://scenes/character_temp.gd" id="1_sjv1s"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1138c"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_sjv1s"]
 
 [node name="character_temp" type="CharacterBody3D"]
 script = ExtResource("1_sjv1s")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_1138c")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
-mesh = SubResource("CapsuleMesh_sjv1s")
