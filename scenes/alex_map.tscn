@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cwrmtmviupasq"]
 
-[ext_resource type="PackedScene" uid="uid://b7ye1opacvy2e" path="res://scenes/mapblock1.tscn" id="2_1en6r"]
+[ext_resource type="PackedScene" path="res://scenes/mapblock1.tscn" id="2_1en6r"]
 [ext_resource type="PackedScene" uid="uid://c70e4c6o1bkdi" path="res://scenes/character_temp.tscn" id="6_1rrwx"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_2q81j"]
