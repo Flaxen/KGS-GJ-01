@@ -1,9 +1,40 @@
-[gd_scene load_steps=26 format=3 uid="uid://kqo6p0mtub38"]
+[gd_scene load_steps=31 format=3 uid="uid://kqo6p0mtub38"]
 
 [ext_resource type="PackedScene" uid="uid://3xvdmdoq85n4" path="res://scenes/mapblock1.tscn" id="1_h8872"]
 [ext_resource type="Texture2D" uid="uid://bs4r5knp61gpd" path="res://assets/characters/characters/Characters(100x100)/Orc/Orc/Orc-Attack01.png" id="2_0dtyf"]
 [ext_resource type="Texture2D" uid="uid://yny74xhm0bdb" path="res://assets/characters/characters/Characters(100x100)/Orc/Orc/Orc.png" id="3_ouat2"]
 [ext_resource type="Texture2D" uid="uid://d4j7p5cvrxbjv" path="res://assets/characters/characters/Characters(100x100)/Orc/Orc/Orc-Walk.png" id="4_v7d7u"]
+[ext_resource type="PackedScene" uid="uid://c70e4c6o1bkdi" path="res://scenes/character_temp.tscn" id="6_v7d7u"]
+
+[sub_resource type="GDScript" id="GDScript_ouat2"]
+script/source = "extends CharacterBody3D
+
+
+const SPEED = 5.0
+const JUMP_VELOCITY = 4.5
+
+@onready var sprite = $AnimatedSprite3D
+
+func _ready():
+	sprite.play(\"idle\")
+
+func _on_player_detector_body_entered(body: Node3D) -> void:
+	if body.name == \"player\":
+		sprite.play(\"attack\")
+
+func _on_player_detector_body_exited(body: Node3D) -> void:
+	if body.name == \"player\":
+		sprite.play(\"idle\")
+
+func _physics_process(delta: float) -> void:
+	# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+
+
+
+	move_and_slide()
+"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wyd0a"]
 atlas = ExtResource("2_0dtyf")
@@ -163,14 +194,58 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_wyd0a"]
+radius = 0.26422
+
+[sub_resource type="GDScript" id="GDScript_0dtyf"]
+script/source = "extends Area3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ouat2"]
+radius = 0.454477
+
 [node name="PatrikMap" type="Node2D"]
 
 [node name="mapblock1" parent="." instance=ExtResource("1_h8872")]
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.995907, 0.0903893, 0, -0.0903893, 0.995907, 0.775369, 1.02132, 2.79343)
-pixel_size = 0.1
+[node name="player" parent="." instance=ExtResource("6_v7d7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.05405, 2.10946, 1.36615)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.933263, -0.129799, 0.334921, -0.012302, 0.920328, 0.390955, -0.358983, -0.368984, 0.857311, -0.288205, 2.74532, 6.51263)
+fov = 71.9756
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99577, 2.0091, 2.48891)
+script = SubResource("GDScript_ouat2")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.995907, 0.0903893, 0, -0.0903893, 0.995907, 0, 0, 0)
+pixel_size = 0.025
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_ccl2b")
 animation = &"run"
 frame_progress = 0.0249462
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.995907, 0.0903893, 0, -0.0903893, 0.995907, 0, 0, 0)
+shape = SubResource("SphereShape3D_wyd0a")
+
+[node name="PlayerDetector" type="Area3D" parent="CharacterBody3D"]
+script = SubResource("GDScript_0dtyf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/PlayerDetector"]
+shape = SubResource("SphereShape3D_ouat2")
+
+[connection signal="body_entered" from="CharacterBody3D/PlayerDetector" to="CharacterBody3D" method="_on_player_detector_body_entered"]
+[connection signal="body_exited" from="CharacterBody3D/PlayerDetector" to="CharacterBody3D" method="_on_player_detector_body_exited"]
