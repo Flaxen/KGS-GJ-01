@@ -96,3 +96,6 @@ shape = SubResource("BoxShape3D_b25ul")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(0.937026, -0.349259, 0, 0.349259, 0.937026, 0, 0, 0, 1, -5.58258, -0.812084, -0.177856)
 shape = SubResource("BoxShape3D_b25ul")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.774519, -0.224144, 0.591506, 0.00540048, 0.937422, 0.348153, -0.632528, -0.266457, 0.727262, 5.82096, 4.95869, 5.753)
