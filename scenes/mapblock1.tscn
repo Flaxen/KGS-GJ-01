@@ -7,12 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://cqffbfsdgr713" path="res://assets/Mountains/mountain-cave.gltf" id="5_yvrvy"]
 [ext_resource type="PackedScene" uid="uid://cw3kfy1y53sls" path="res://assets/Mountains/mountain-side-1.gltf" id="6_856gw"]
 [ext_resource type="PackedScene" uid="uid://bypucw5wsiqrn" path="res://assets/Mountains/mountain-edge-inner-1.gltf" id="7_ej7fh"]
-[ext_resource type="PackedScene" uid="uid://dmw87stuo5e7x" path="res://scenes/door_zone.tscn" id="8_856gw"]
+[ext_resource type="PackedScene" path="res://scenes/door_zone.tscn" id="8_856gw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ckmnm"]
 size = Vector3(6.29887, 1, 7.35092)
 
-[node name="mapblock1" type="Node3D"]
+[node name="map" type="Node3D"]
 
 [node name="door_zones" type="Node3D" parent="."]
 

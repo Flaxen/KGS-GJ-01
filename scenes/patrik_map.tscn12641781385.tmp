@@ -1,31 +1,25 @@
 [gd_scene load_steps=32 format=3 uid="uid://kqo6p0mtub38"]
 
+[ext_resource type="PackedScene" uid="uid://3xvdmdoq85n4" path="res://scenes/mapblock1.tscn" id="1_h8872"]
 [ext_resource type="Texture2D" uid="uid://bs4r5knp61gpd" path="res://assets/characters/characters/Characters(100x100)/Orc/Orc/Orc-Attack01.png" id="2_0dtyf"]
 [ext_resource type="Texture2D" uid="uid://yny74xhm0bdb" path="res://assets/characters/characters/Characters(100x100)/Orc/Orc/Orc.png" id="3_ouat2"]
 [ext_resource type="Texture2D" uid="uid://d4j7p5cvrxbjv" path="res://assets/characters/characters/Characters(100x100)/Orc/Orc/Orc-Walk.png" id="4_v7d7u"]
-[ext_resource type="PackedScene" path="res://scenes/mapblock2.tscn" id="5_0dtyf"]
 [ext_resource type="PackedScene" uid="uid://c70e4c6o1bkdi" path="res://scenes/character_temp.tscn" id="6_v7d7u"]
 
 [sub_resource type="GDScript" id="GDScript_ouat2"]
 script/source = "extends CharacterBody3D
-const SPEED = 1.0
+
+
+const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 var player
 @export var turn_speed = 4.0
+
 @onready var sprite = $AnimatedSprite3D
-
-enum state {
-	idle, 
-	walk, 
-	attack,
-	chase
-			}
-
 
 func _ready():
 	sprite.play(\"idle\")
-	player = get_tree().get_nodes_in_group(\"Player\")[0]
-	
+	player = get_tree().get_nodes_in_group(\"hero\")[0]
 
 func _on_player_detector_body_entered(body: Node3D) -> void:
 	if body.name == \"player\":
@@ -35,24 +29,15 @@ func _on_player_detector_body_exited(body: Node3D) -> void:
 	if body.name == \"player\":
 		sprite.play(\"idle\")
 
-func check_rotation(velocity):
-	if velocity.x > 0:
-		sprite.flip_h = false
-	elif velocity.x <0:
-		sprite.flip_h = true
-	
-
 func _physics_process(delta: float) -> void:
-	
-	sprite.play(\"run\")
-	#$FaceDirection.look_at(player.global_transform.origin, Vector3.UP)
-	#rotate_y(deg_to_rad($FaceDirection.rotation.y * turn_speed))
+	# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
 	$NavigationAgent3D.set_target_position(player.global_transform.origin)
-	
-	var velocity = ($NavigationAgent3D.get_next_path_position() - transform.origin).normalized() * SPEED * delta
-	check_rotation(velocity)
-	move_and_collide(velocity)
-	
+	var velocity = ($NavigationAgent3d.get_next_path_position - transform.origin).normalized() * SPEED * delta
+
+
+	move_and_slide()
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wyd0a"]
@@ -214,7 +199,7 @@ animations = [{
 }]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wyd0a"]
-radius = 0.219468
+radius = 0.26422
 
 [sub_resource type="GDScript" id="GDScript_0dtyf"]
 script/source = "extends Area3D
@@ -234,8 +219,6 @@ func _process(delta: float) -> void:
 radius = 0.454477
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_0dtyf"]
-vertices = PackedVector3Array(-13.3314, 5.8557, -3.59637, -13.5814, 5.8557, -16.0964, -14.0814, 5.8557, -3.84637, -13.5814, 5.8557, -3.09637, 10.6686, 5.8557, 5.90363, 10.9186, 5.8557, 9.40363, 11.4186, 5.8557, 6.15363, 10.9186, 5.8557, 5.40363, 10.6686, 5.8557, -3.34637, 10.6686, 5.8557, -3.59637, -13.3314, 5.8557, 5.65363, -13.8314, 5.8557, 9.40363, -13.3314, 5.8557, 5.90363, 11.1686, 5.8557, -16.0964, -13.5814, -3.6443, -3.09637, -13.5814, -3.6443, 5.15363, -12.3314, -2.8943, 5.15363, -12.3314, -2.8943, -3.09637, 9.91859, -2.8943, -3.09637, 9.91859, -2.8943, 5.15363, 10.6686, -3.3943, 5.15363, 10.6686, -3.3943, -3.09637, -12.3314, -0.144296, 3.15363, -12.3314, -0.144296, 4.65363, -11.8314, -0.144296, 4.65363, -11.5814, -0.144296, 3.90363, -11.3314, -0.144296, 2.90363, -11.3314, -0.144296, 1.40363, -10.5814, -0.144296, 3.90363, -11.3314, -0.144296, 0.403627, -8.33141, -0.144296, 3.90363, -7.33141, 0.105704, 3.90363, -11.3314, -0.144296, -0.846373, -1.33141, 0.355704, -1.34637, -1.33141, 0.355704, -2.34637, -1.83141, 0.355704, -2.34637, -2.08141, 0.355704, -1.09637, -7.08141, 0.105704, 4.65363, -4.58141, 0.355704, 4.65363, -4.33141, 0.355704, 3.90363, -12.5814, -0.144296, 0.653627, -12.5814, -0.144296, 1.15363, -3.33141, 0.355704, -1.09637, -3.83141, 0.355704, -2.34637, -12.3314, -0.144296, -2.34637, -0.581413, 0.355704, -1.09637, -1.33141, 0.355704, 3.90363, -0.581413, 0.355704, 3.90363, -12.3314, -0.144296, -1.09637, -3.33141, 0.355704, 3.90363, -3.08141, 0.355704, 4.65363, -1.58141, 0.355704, 4.65363, -10.3314, -0.144296, 4.65363, -8.58141, -0.144296, 4.65363, -0.0814133, 0.355704, 4.65363, 0.918587, 0.355704, 4.65363, 1.16859, 0.355704, 3.90363, 0.418587, 0.355704, -1.09637, 8.41859, -0.144296, 3.90363, 8.66859, -0.144296, 4.65363, 9.91859, -0.144296, 4.65363, 9.91859, -0.144296, -2.34637, 2.91859, 0.355704, -2.34637, 4.41859, 0.105704, 3.90363, 5.41859, -0.144296, 3.90363, 5.66859, -0.144296, 4.65363, 7.16859, -0.144296, 4.65363, 7.41859, -0.144296, 3.90363, 2.16859, 0.355704, 3.90363, 2.41859, 0.355704, 4.65363, 4.16859, 0.105704, 4.65363, 0.918587, 0.355704, -2.09637, 5.71859, -0.144296, -2.34637)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5), PackedInt32Array(9, 8, 0), PackedInt32Array(0, 8, 3), PackedInt32Array(12, 11, 10), PackedInt32Array(10, 11, 3), PackedInt32Array(3, 11, 2), PackedInt32Array(8, 9, 7), PackedInt32Array(7, 9, 6), PackedInt32Array(6, 9, 13), PackedInt32Array(12, 10, 4), PackedInt32Array(4, 10, 7), PackedInt32Array(17, 16, 14), PackedInt32Array(14, 16, 15), PackedInt32Array(21, 20, 18), PackedInt32Array(18, 20, 19), PackedInt32Array(24, 23, 25), PackedInt32Array(25, 23, 22), PackedInt32Array(25, 22, 26), PackedInt32Array(28, 26, 27), PackedInt32Array(30, 29, 31), PackedInt32Array(31, 29, 32), PackedInt32Array(34, 33, 35), PackedInt32Array(35, 33, 36), PackedInt32Array(37, 31, 38), PackedInt32Array(38, 31, 39), PackedInt32Array(28, 25, 26), PackedInt32Array(40, 29, 41), PackedInt32Array(41, 29, 27), PackedInt32Array(42, 39, 43), PackedInt32Array(43, 39, 31), PackedInt32Array(43, 31, 32), PackedInt32Array(43, 32, 44), PackedInt32Array(33, 45, 36), PackedInt32Array(36, 45, 46), PackedInt32Array(46, 45, 47), PackedInt32Array(32, 48, 44), PackedInt32Array(50, 49, 51), PackedInt32Array(51, 49, 46), PackedInt32Array(46, 49, 36), PackedInt32Array(36, 49, 42), PackedInt32Array(42, 49, 39), PackedInt32Array(52, 28, 53), PackedInt32Array(53, 28, 30), PackedInt32Array(30, 28, 27), PackedInt32Array(30, 27, 29), PackedInt32Array(55, 54, 56), PackedInt32Array(56, 54, 47), PackedInt32Array(56, 47, 57), PackedInt32Array(57, 47, 45), PackedInt32Array(59, 58, 60), PackedInt32Array(60, 58, 61), PackedInt32Array(64, 63, 62), PackedInt32Array(65, 64, 66), PackedInt32Array(66, 64, 67), PackedInt32Array(68, 56, 57), PackedInt32Array(69, 68, 70), PackedInt32Array(70, 68, 63), PackedInt32Array(63, 68, 57), PackedInt32Array(63, 57, 71), PackedInt32Array(63, 71, 62), PackedInt32Array(62, 72, 64), PackedInt32Array(64, 72, 67), PackedInt32Array(67, 72, 61), PackedInt32Array(61, 58, 67)]
 
 [node name="PatrikMap" type="Node2D"]
 
@@ -268,18 +251,10 @@ script = SubResource("GDScript_0dtyf")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Base_monster/PlayerDetector"]
 shape = SubResource("SphereShape3D_ouat2")
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Base_monster"]
-
-[node name="FaceDirection" type="Node3D" parent="Base_monster"]
-
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_0dtyf")
 
-[node name="mapblock2" parent="NavigationRegion3D" instance=ExtResource("5_0dtyf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.48767, 0, 1.0412)
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="NavigationRegion3D/mapblock2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.23711, 2.84071, 4.76837e-07)
+[node name="mapblock1" parent="NavigationRegion3D" instance=ExtResource("1_h8872")]
 
 [connection signal="body_entered" from="Base_monster/PlayerDetector" to="Base_monster" method="_on_player_detector_body_entered"]
 [connection signal="body_exited" from="Base_monster/PlayerDetector" to="Base_monster" method="_on_player_detector_body_exited"]
