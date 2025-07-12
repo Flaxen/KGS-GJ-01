@@ -5,6 +5,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_32lvc"]
 
 [node name="door_zone" type="Area3D"]
+collision_mask = 2
 script = ExtResource("1_q67vx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

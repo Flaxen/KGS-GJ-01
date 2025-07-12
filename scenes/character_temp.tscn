@@ -7,6 +7,7 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_sjv1s"]
 
 [node name="character_temp" type="CharacterBody3D"]
+collision_layer = 3
 script = ExtResource("1_sjv1s")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
