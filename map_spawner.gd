@@ -48,7 +48,7 @@ func _ready():
 	current_map = spawn_new_map()
 	timer = Timer.new()
 	add_child(timer)
-	timer.wait_time = 3.0
+	timer.wait_time = 1.0
 	self.timer.timeout.connect(Callable(self, "_on_timeout"))
 	
 	
