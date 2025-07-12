@@ -2,16 +2,13 @@ extends Node3D
 
 signal redrawing_map
 signal timeout
-@export var map_block: PackedScene
-@export var map_block2: PackedScene
+@export var map_blocks: Array[PackedScene]
 
-var flipper = 0
 var current_map
-
 var timer
+var last_rand
 
 func _on_timeout():
-	print("funk")
 	timer.stop()
 
 func _on_zone_testsignal():
@@ -24,13 +21,11 @@ func _on_zone_testsignal():
 	
 		
 func spawn_new_map():
-	var mb
-	if flipper == 0:
-		mb = map_block.instantiate()
-		flipper = 1
-	else:
-		mb = map_block2.instantiate()
-		flipper = 0
+	var new_rand = last_rand
+	while new_rand == last_rand:
+		new_rand = randi_range(0, map_blocks.size()-1)
+	last_rand = new_rand
+	var mb = map_blocks[new_rand].instantiate()
 		
 	self.add_child(mb)
 	print("spawned map " + mb.name)
@@ -38,7 +33,6 @@ func spawn_new_map():
 	var door_zones = mb.get_child(0).get_children()
 	
 	for door_zone in door_zones:
-		print(door_zone)
 		door_zone.test_signal.connect(Callable(self, "_on_zone_testsignal"))
 		
 	return mb

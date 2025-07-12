@@ -1,0 +1,118 @@
+[gd_scene load_steps=10 format=3 uid="uid://kghpfa1y7bwv"]
+
+[ext_resource type="PackedScene" uid="uid://dmw87stuo5e7x" path="res://scenes/door_zone.tscn" id="1_wbgfu"]
+[ext_resource type="PackedScene" uid="uid://2ix6tl74hpvs" path="res://assets/Meshes/SM_PillarArch01.fbx" id="2_qwnyk"]
+[ext_resource type="PackedScene" uid="uid://dfa60egrx8yom" path="res://assets/Meshes/SM_Floor_x1.fbx" id="3_8u350"]
+[ext_resource type="PackedScene" uid="uid://cjqeshs7i06ml" path="res://assets/Meshes/SM_WallGate01.fbx" id="4_wbgfu"]
+[ext_resource type="PackedScene" uid="uid://bis2b1a7xpfqx" path="res://assets/Meshes/SM_Gate01.fbx" id="5_16rxf"]
+[ext_resource type="PackedScene" uid="uid://cawhn1yvd480k" path="res://assets/Meshes/SM_WallWindow01.fbx" id="6_hx7wn"]
+[ext_resource type="PackedScene" uid="uid://dbsqqrnmmf2la" path="res://assets/Meshes/sm_floor_steps_x_1.tscn" id="7_wbgfu"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4prg1"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_wbgfu"]
+
+[node name="mapblock3" type="Node3D"]
+
+[node name="door_zones" type="Node3D" parent="."]
+
+[node name="door_zone" parent="door_zones" instance=ExtResource("1_wbgfu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.95498, 0, -3.91017)
+
+[node name="door_zone2" parent="door_zones" instance=ExtResource("1_wbgfu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.326)
+
+[node name="door_zone3" parent="door_zones" instance=ExtResource("1_wbgfu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7761, 0, 0)
+
+[node name="SM_PillarArch01" parent="." instance=ExtResource("2_qwnyk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.529842, -2)
+
+[node name="SM_PillarArch02" parent="." instance=ExtResource("2_qwnyk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.529842, -2)
+
+[node name="SM_PillarArch03" parent="." instance=ExtResource("2_qwnyk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.529842, 2)
+
+[node name="SM_PillarArch04" parent="." instance=ExtResource("2_qwnyk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.529842, 2)
+
+[node name="SM_Floor_x1" parent="." instance=ExtResource("3_8u350")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+
+[node name="SM_Floor_x4" parent="." instance=ExtResource("3_8u350")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+
+[node name="SM_Floor_x2" parent="." instance=ExtResource("3_8u350")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+
+[node name="SM_Floor_x3" parent="." instance=ExtResource("3_8u350")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
+
+[node name="SM_WallGate01" parent="." instance=ExtResource("4_wbgfu")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8, 0, 0)
+
+[node name="SM_WallGate02" parent="." instance=ExtResource("4_wbgfu")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, -8)
+
+[node name="SM_WallGate04" parent="." instance=ExtResource("4_wbgfu")]
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0, 0, -8)
+
+[node name="SM_WallGate03" parent="." instance=ExtResource("4_wbgfu")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 8, 0, 0)
+
+[node name="SM_Gate01" parent="." instance=ExtResource("5_16rxf")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -12, 0, 0)
+
+[node name="SM_Gate02" parent="." instance=ExtResource("5_16rxf")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 8, 0, -4)
+
+[node name="SM_Gate03" parent="." instance=ExtResource("5_16rxf")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, -12)
+
+[node name="SM_WallWindow01" parent="." instance=ExtResource("6_hx7wn")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -12, 0, -4)
+
+[node name="SM_WallWindow02" parent="." instance=ExtResource("6_hx7wn")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8, 0, -4)
+
+[node name="SM_WallWindow03" parent="." instance=ExtResource("6_hx7wn")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -4, 0, -4)
+
+[node name="SM_WallWindow04" parent="." instance=ExtResource("6_hx7wn")]
+transform = Transform3D(7.54979e-08, 0, -1, 0, 1, 0, 1, 0, 7.54979e-08, -4, 0, -8)
+
+[node name="SM_WallWindow07" parent="." instance=ExtResource("6_hx7wn")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 4, 0, -4)
+
+[node name="SM_WallWindow08" parent="." instance=ExtResource("6_hx7wn")]
+transform = Transform3D(7.54979e-08, 0, -1, 0, 1, 0, 1, 0, 7.54979e-08, 4, 0, -8)
+
+[node name="SM_WallWindow06" parent="." instance=ExtResource("6_hx7wn")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4, 0, -12)
+
+[node name="SM_WallWindow05" parent="." instance=ExtResource("6_hx7wn")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4, 0, -8)
+
+[node name="SM_FloorSteps_x1" parent="." instance=ExtResource("7_wbgfu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.531605, 0)
+
+[node name="SM_FloorSteps_x2" parent="." instance=ExtResource("7_wbgfu")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.531605, 0)
+
+[node name="SM_FloorSteps_x3" parent="." instance=ExtResource("7_wbgfu")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -0.531605, 0)
+
+[node name="SM_FloorSteps_x4" parent="." instance=ExtResource("7_wbgfu")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 0, -0.531605, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1.2, 0, 0, 0, 0.6, 0, 0, 0, 1.2, 0, -0.529842, 0)
+mesh = SubResource("CylinderMesh_4prg1")
+skeleton = NodePath("../../SM_PillarArch04")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1.2, 0, 0, 0, 0.6, 0, 0, 0, 1.2, 0, -0.529842, 0)
+shape = SubResource("CylinderShape3D_wbgfu")

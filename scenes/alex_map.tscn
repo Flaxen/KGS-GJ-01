@@ -1,9 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://cwrmtmviupasq"]
+[gd_scene load_steps=8 format=3 uid="uid://cwrmtmviupasq"]
 
 [ext_resource type="Script" uid="uid://2sx24w7hyudc" path="res://scripts/alex_map.gd" id="1_huetp"]
-[ext_resource type="PackedScene" uid="uid://3xvdmdoq85n4" path="res://scenes/mapblock1.tscn" id="2_1en6r"]
 [ext_resource type="PackedScene" uid="uid://b4w6jfh3ngm2c" path="res://scenes/map_spawner.tscn" id="3_huetp"]
-[ext_resource type="PackedScene" uid="uid://wt5pwplax7y" path="res://scenes/mapblock2.tscn" id="4_821fq"]
 [ext_resource type="PackedScene" uid="uid://c70e4c6o1bkdi" path="res://scenes/character_temp.tscn" id="6_1rrwx"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_2q81j"]
@@ -19,24 +17,37 @@ sky = SubResource("Sky_1rrwx")
 [node name="alex_map" type="Node3D"]
 script = ExtResource("1_huetp")
 
-[node name="character_temp" parent="." instance=ExtResource("6_1rrwx")]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+stretch_shrink = 4
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(288, 162)
+render_target_update_mode = 4
+
+[node name="map_spawner" parent="SubViewportContainer/SubViewport" instance=ExtResource("3_huetp")]
+
+[node name="character_temp" parent="SubViewportContainer/SubViewport" instance=ExtResource("6_1rrwx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.83467, 1.49317, -0.393256)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="character_temp"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/character_temp"]
 mesh = SubResource("CapsuleMesh_2q81j")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
 transform = Transform3D(0.775176, -0.396601, 0.491741, 0, 0.778386, 0.627786, -0.631745, -0.486645, 0.603386, 2.72203, 5.86601, 5.49137)
 environment = SubResource("Environment_me3h7")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport"]
 transform = Transform3D(0.999529, -0.00271478, 0.0305752, 0, 0.996081, 0.0884423, -0.0306955, -0.0884006, 0.995612, -13.5772, 45.6556, 9.99736)
 light_energy = 2.0
 light_specular = 3.909
 sky_mode = 1
 
-[node name="map_spawner" parent="." instance=ExtResource("3_huetp")]
-map_block = ExtResource("4_821fq")
-map_block2 = ExtResource("2_1en6r")
-
-[connection signal="redrawing_map" from="map_spawner" to="character_temp" method="_on_map_spawner_redrawing_map"]
+[connection signal="redrawing_map" from="SubViewportContainer/SubViewport/map_spawner" to="SubViewportContainer/SubViewport/character_temp" method="_on_map_spawner_redrawing_map"]
