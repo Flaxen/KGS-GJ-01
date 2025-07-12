@@ -8,13 +8,21 @@
 [ext_resource type="PackedScene" uid="uid://cawhn1yvd480k" path="res://assets/Meshes/SM_WallWindow01.fbx" id="6_j63u1"]
 [ext_resource type="PackedScene" uid="uid://dmw87stuo5e7x" path="res://scenes/door_zone.tscn" id="7_tamub"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ley5c"]
-size = Vector3(9, 1, 9)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_tamub"]
 size = Vector3(1, 6.6983, 26.4368)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_b25ul"]
+size = Vector3(1.86523, 1, 8.26099)
+
 [node name="mapblock2" type="Node3D"]
+
+[node name="door_zones" type="Node3D" parent="."]
+
+[node name="door_zone" parent="door_zones" instance=ExtResource("7_tamub")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.119656, 0.700924, -3.19136)
+
+[node name="door_zone2" parent="door_zones" instance=ExtResource("7_tamub")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.6742, 0.700924, 0.025465)
 
 [node name="terrain" type="Node3D" parent="."]
 
@@ -72,46 +80,19 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -11.77
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7.77094, -0.681109, -4)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
-visible = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.547099, 0)
-shape = SubResource("BoxShape3D_ley5c")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.96137, -0.940253, 0)
-shape = SubResource("BoxShape3D_ley5c")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.84374, -0.940253, 0)
-shape = SubResource("BoxShape3D_ley5c")
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(0.881097, -0.472935, 0, 0.472935, 0.881097, 0, 0, 0, 1, -8.16414, -2.57554, 0)
-shape = SubResource("BoxShape3D_ley5c")
-
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(0.895378, 0.445307, 0, -0.445307, 0.895378, 0, 0, 0, 1, 8.31194, -2.48928, 0)
-shape = SubResource("BoxShape3D_ley5c")
-
-[node name="CollisionShape3D6" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(-0.00253073, 0, -0.999997, 0, 1, 0, 0.999997, 0, -0.00253073, 0.130493, 2.07382, -4.41748)
-shape = SubResource("BoxShape3D_tamub")
 
 [node name="CollisionShape3D9" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(-0.00253073, 0, -0.999997, 0, 1, 0, 0.999997, 0, -0.00253073, 0.130493, 2.07382, 4.66421)
-shape = SubResource("BoxShape3D_tamub")
-
-[node name="CollisionShape3D7" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(0.999994, 0, -0.00354301, 0, 1, 0, 0.00354301, 0, 0.999994, -12.1858, 2.07382, -4.41748)
 shape = SubResource("BoxShape3D_tamub")
 
 [node name="CollisionShape3D8" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(0.999994, 0, -0.00354301, 0, 1, 0, 0.00354301, 0, 0.999994, 12.5712, 2.07382, -4.41748)
 shape = SubResource("BoxShape3D_tamub")
 
-[node name="door_zone" parent="." instance=ExtResource("7_tamub")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.119656, 0.700924, -3.19136)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(0.900782, 0.434272, 0, -0.434272, 0.900782, 0, 0, 0, 1, 5.50498, -0.851378, -0.177856)
+shape = SubResource("BoxShape3D_b25ul")
 
-[node name="door_zone2" parent="." instance=ExtResource("7_tamub")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.6742, 0.700924, 0.025465)
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(0.937026, -0.349259, 0, 0.349259, 0.937026, 0, 0, 0, 1, -5.58258, -0.812084, -0.177856)
+shape = SubResource("BoxShape3D_b25ul")

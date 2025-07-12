@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbsqqrnmmf2la"]
+
+[ext_resource type="PackedScene" uid="uid://c0kbtbqs56042" path="res://assets/Meshes/SM_FloorSteps_x1.fbx" id="1_pi80o"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8x8ay"]
+size = Vector3(7.99207, 1, 1.32153)
+
+[node name="SM_FloorSteps_x1" instance=ExtResource("1_pi80o")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.912185, 0.40978, 0, -0.40978, 0.912185, 0.00628662, -0.188163, 2.72811)
+shape = SubResource("BoxShape3D_8x8ay")
